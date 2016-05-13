@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html >
+  <head>
+      <title>Angular Practice</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <script src="node_modules/angular/angular.js"></script>
+      <script src="app.js"></script>
+  </head>
+  <body ng-app="todolist">
+
+  <div ng-controller="ListCtrl as vm">
+      <form ng-submit="vm.addTask(vm.newTaskText)">
+          <input type="text" ng-model="vm.newTaskText"/ placeholder="try to add a task">
+         <!--將input的值綁到model -->
+          <input type="submit">
+      </form>
+
+      <form ng-submit="vm.auth(vm.listName)">
+          <input type="text" ng-model="vm.listName"/ placeholder="input the list name">
+         <!--將input的值綁到model -->
+          <input type="submit">
+      </form>
+
+      <ul>
+          <li ng-repeat="task in vm.tasks">
+              <input type="checkbox" ng-model="task.isDone" ng-change="vm.updateTask(task.id,task.isDone)" >
+              <span ng-bind="task.text"></span>
+              <button ng-click="vm.deleteTask(task.id)">Delete</button>
+          </li>
+      </ul>
+
+      <button ng-click="vm.getTasks()">Refresh</button>
+  </div>
+
+
+  </body>
+</html>

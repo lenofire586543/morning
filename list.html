@@ -1,0 +1,16 @@
+
+      <form ng-submit="vm.auth(vm.listName)">
+        <input type="text" ng-model="vm.listName"/>
+         <!--將input的值綁到model -->
+        <input type="submit">
+      </form>
+
+      <ul>
+        <li ng-repeat="task in vm.tasks">
+          <input type="checkbox" ng-model="task.isDone" ng-change="vm.updateTask(task)">
+             <span ng-bind="task.text"></span>
+             <button ng-click="vm.deleteTask(task.id)">Delete</button>
+        </li>
+      </ul>
+
+      <button ng-click="vm.getTasks()">Refresh</button>
